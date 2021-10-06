@@ -1,0 +1,30 @@
+<p>shopping-edit works!</p>
+<div class="row">
+  <div class="col-xs-12">
+    <form>
+      <div class="row">
+        <div class="col-sm-3 form-group">
+          &nbsp;
+          <label for="name">Name: &nbsp;</label>
+          <input type="text" id="name" class="form-controll" 
+          #nameInput/>
+        </div>
+        <div class="col-sm-3 form-group">
+          <label for="number">Amount: &nbsp;</label>
+          <input type="amount" id="amount" class="form-controll" 
+          #amountInput/>
+        </div>
+      </div>
+      <br /><br />
+      <div class="row">
+        <div class="col-xs-12">
+          &nbsp;
+          <button type="submit" class="btn btn-success" (click)="onAddItem()">Add</button>&nbsp;
+          <button type="button" class="btn btn-danger">Delete Item</button
+          >&nbsp;
+          <button type="button" class="btn btn-primary">Clear</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

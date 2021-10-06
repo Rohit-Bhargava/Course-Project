@@ -1,0 +1,22 @@
+<div>
+  <app-shopping-edit
+  (ingradientAdded)="onIngradientAdded($event)"></app-shopping-edit>
+</div>
+<hr>
+<br />
+<div class="container-fluid" id="list1">
+  <table class="table boarder-primary" style="text-align: center;">
+    <thead>
+      <th>Item Name</th>
+      &nbsp;&nbsp;
+      <th>Amount</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ingradient of ingradients">
+        <td>{{ ingradient.name }}</td>
+        &nbsp;&nbsp;
+        <td>{{ ingradient.amount }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
