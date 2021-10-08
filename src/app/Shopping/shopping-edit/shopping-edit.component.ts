@@ -1,7 +1,12 @@
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild
+} from '@angular/core';
 
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { Ingradient } from 'src/app/shared/ingradient.model';
-
+import { Ingradient } from '../../shared/ingradient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -9,20 +14,19 @@ import { Ingradient } from 'src/app/shared/ingradient.model';
   styleUrls: ['./shopping-edit.component.css']
 })
 export class ShoppingEditComponent implements OnInit {
-slist: any
- @ViewChild('nameInput') nameInputRef: ElementRef;
- @ViewChild('amountInput') amountInputRef: ElementRef;
- @Output() ingradientAdded = new EventEmitter<Ingradient>();
-  constructor() { }
+  @ViewChild('nameInput', { static: false }) nameInputRef: ElementRef;
+  @ViewChild('amountInput', { static: false }) amountInputRef: ElementRef;
 
-  ngOnInit(): void {
+  constructor(private slService: ShoppingListService) { }
+
+  ngOnInit() {
   }
 
-  onAddItem(){
+  onAddItem() {
     const ingName = this.nameInputRef.nativeElement.value;
     const ingAmount = this.amountInputRef.nativeElement.value;
     const newIngradient = new Ingradient(ingName, ingAmount);
-    this.ingradientAdded.emit(newIngradient);
+    this.slService.addIngradient(newIngradient);
   }
 
 }

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ingradient } from 'src/app/shared/ingradient.model';
-
-
-
+import { ShoppingListService } from './shopping-list.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -10,20 +8,19 @@ import { Ingradient } from 'src/app/shared/ingradient.model';
   styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent implements OnInit {
-  ingradients: Ingradient[]=[
-   new Ingradient('apple', 5),
-   new Ingradient('Tomatose', 10)
-  ];
+  ingradients: Ingradient[];
 
-  constructor() { }
+  constructor(private slService: ShoppingListService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.ingradients = this.slService.getIngraedients();
+    this.slService.ingradientsChanged
+      .subscribe(
+        (ingradients: Ingradient[]) => {
+          this.ingradients = ingradients;
+        }
+      );
   }
-
-  onIngradientAdded(ingradient: Ingradient){
-    this.ingradients.push(ingradient);
-  }
-
- 
-
 }
+
+

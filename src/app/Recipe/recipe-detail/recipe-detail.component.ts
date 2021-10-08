@@ -1,5 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Ingradient } from 'src/app/shared/ingradient.model';
+import { Recipe } from '../recipe.model';
+import { RecipeService } from '../recipe.service';
 
+import { ShoppingListService } from 'src/app/Shopping/shopping-list/shopping-list.service';
 
 
 @Component({
@@ -9,15 +13,15 @@ import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class RecipeDetailComponent implements OnInit {
  
-  @Input() data: any;
-  @Output() mydata: EventEmitter<string> = new EventEmitter<string>();
+  @Input() recipe: Recipe;
 
-  constructor() { }
+  constructor(private recipeService: RecipeService, private _shoppingListService: ShoppingListService) { }
 
-  ngOnInit(): void {
-  } 
-
-  dataChange() {
-    this.mydata.emit("Keyur change in data")
+  ngOnInit() {
   }
+
+  onAddToShoppingList() {
+    this.recipeService.addIngradientsToShoppingList(this.recipe.ingradients);
+  }
+
 }

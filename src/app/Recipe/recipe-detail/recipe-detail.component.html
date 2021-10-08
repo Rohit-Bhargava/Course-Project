@@ -5,7 +5,7 @@
         Manage Recipe<span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item">To Shopping List</a></li>
+        <li><a class="dropdown-item" (click)="onAddToShoppingList()" style="cursor: pointer;">To Shopping List</a></li>
         <li><a class="dropdown-item">Edit Recipe</a></li>
         <li><a class="dropdown-item">Delete Recipe</a></li>
       </ul>
@@ -14,9 +14,28 @@
 </div>
 <br /><br />
 
+
+
 <div class="cnter">
-    <p>{{ data.name }}</p>
+    <p>{{ recipe.name }}</p>
 <br />
-<div><img src="{{ data.img }}" alt="" /></div>
+<div><img src="{{ recipe.img }}" alt="" /></div>
+</div><br>
+
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      
+      <li
+        class="list-group-item"
+        *ngFor="let ingradient of recipe.ingradients">
+        <div>
+          <u><b>Ingradient Details</b></u>
+        </div>
+        {{ ingradient.name }} - {{ ingradient.amount }}
+      </li>
+    </ul>
+  </div>
 </div>
+
 

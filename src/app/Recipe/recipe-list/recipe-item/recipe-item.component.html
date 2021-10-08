@@ -1,0 +1,18 @@
+<div class="container-fluid" id="list2">
+    <table class="table boarder boarder-primary">
+      <thead style="text-align: center">
+        <th>S.No</th>
+        <th>Recipe Name</th>
+        <th>Recipe</th>
+      </thead>
+      <tbody style="text-align: center">
+        <tr (click)="onSelected(recipe)">
+          <td>{{ recipe.sno }}</td>
+          <td>{{ recipe.name }}</td>
+          <td >
+            <img src="{{ recipe.img }}" style="width: 100px; height: 100px"  />
+          </td>
+        </tr>
+      </tbody>
+    </table>    
+  </div>
