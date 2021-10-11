@@ -6,6 +6,7 @@ export class Recipe{
     public img: string;
     public ingradients: Ingradient[]
   ingradient: Ingradient;
+  imagePath: string;
 
     constructor(discription: string, name: string, img: string, ingradients: Ingradient[]){
         this.discription=discription;

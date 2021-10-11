@@ -5,6 +5,12 @@ import { ShoppingListService } from "../Shopping/shopping-list/shopping-list.ser
 
 @Injectable()
 export class RecipeService{
+  updateRecipe(id: number, value: any) {
+    throw new Error('Method not implemented.');
+  }
+  addRecipe(id: number, value: any) {
+    throw new Error('Method not implemented.');
+  }
   recipeSelected = new EventEmitter<Recipe>();
   private recipes: Recipe[] =[
     new Recipe( "panipuri is a Indian recipe",
