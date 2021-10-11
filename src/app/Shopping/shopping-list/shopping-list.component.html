@@ -12,7 +12,7 @@
       <th>Amount</th>
     </thead>
     <tbody>
-      <tr *ngFor="let ingradient of ingradients">
+      <tr *ngFor="let ingradient of ingradients; let i = index" (click)="onEditItem(i)">
         <td>{{ ingradient.name }}</td>
         &nbsp;&nbsp;
         <td>{{ ingradient.amount }}</td>
