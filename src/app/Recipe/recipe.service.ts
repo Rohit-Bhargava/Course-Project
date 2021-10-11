@@ -6,20 +6,20 @@ import { ShoppingListService } from "../Shopping/shopping-list/shopping-list.ser
 @Injectable()
 export class RecipeService{
   recipeSelected = new EventEmitter<Recipe>();
-  private recipe: Recipe[] =[
-    new Recipe( 1,
+  private recipes: Recipe[] =[
+    new Recipe( "panipuri is a Indian recipe",
       "panipuri",
       "assets/image/panipuri.jpg",
       [
         new Ingradient('appel', 4)
       ]),
-    new Recipe( 2,
+    new Recipe( "smosha is a Indian recipe",
       "smosha",
       "assets/image/samosha.jpg",
       [
         new Ingradient('appel',6)
       ]),
-    new Recipe(3, "pizza", "assets/image/pizza.jpg",[
+    new Recipe("pizza is a western recipe", "pizza", "assets/image/pizza.jpg",[
       new Ingradient('banana', 5)
     ])
   ];
@@ -28,16 +28,16 @@ export class RecipeService{
   constructor(private slService: ShoppingListService){}
   
 
-  getRecipe(){
-    return this.recipe.slice()
+  getRecipes() {
+    return this.recipes.slice();
+  }
+
+  getRecipe(index: number) {
+    return this.recipes[index];
   }
 
   addIngradientsToShoppingList(ingradiants: Ingradient[]){
     this.slService.addIngradients(ingradiants);
   }
 
-  
-  getRecipes(): Recipe[] {
-    return this.recipe;
-  }
 }

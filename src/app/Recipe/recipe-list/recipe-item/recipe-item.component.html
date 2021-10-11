@@ -1,13 +1,14 @@
 <div class="container-fluid" id="list2">
     <table class="table boarder boarder-primary">
       <thead style="text-align: center">
-        <th>S.No</th>
+        <th>Discription</th>
         <th>Recipe Name</th>
         <th>Recipe</th>
       </thead>
       <tbody style="text-align: center">
-        <tr (click)="onSelected(recipe)">
-          <td>{{ recipe.sno }}</td>
+        <tr [routerLink]="[index]"
+        routerLinkActive="active">
+          <td>{{ recipe.discription }}</td>
           <td>{{ recipe.name }}</td>
           <td >
             <img src="{{ recipe.img }}" style="width: 100px; height: 100px"  />

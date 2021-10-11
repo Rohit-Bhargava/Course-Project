@@ -3,9 +3,10 @@
     <app-recipe-list #listReceipe></app-recipe-list>
   </div>&nbsp;
   <div class="col-sm-5">
-    <app-recipe-detail
-  [recipe]="listReceipe.recepe"
-></app-recipe-detail>
+    <router-outlet></router-outlet>
+  <!--  <app-recipe-detail
+   [recipe]="listReceipe.recepe"
+></app-recipe-detail> -->
   </div>
 </div>
 
