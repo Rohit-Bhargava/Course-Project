@@ -1,0 +1,39 @@
+<div class="container-fluid" id="list2">
+  <table class="table boarder boarder-primary">
+    <thead style="text-align: center">
+      <th>Discription</th>
+      <th>Recipe Name</th>
+      <th>Recipe</th>
+    </thead>
+    <tbody style="text-align: center">
+      <tr [routerLink]="[index]"
+      routerLinkActive="active">
+        <td>{{ recipe.description }}</td>
+        <td>{{ recipe.name }}</td>
+        <td >
+          <img  [src]="recipe.imagePath"
+          alt="{{ recipe.name }}"
+          class="img-responsive" style="width: 100px; height: 100px"  />
+        </td>
+      </tr>
+    </tbody>
+  </table>    
+</div>
+
+<!-- <a
+  style="cursor: pointer;"
+  [routerLink]="[index]"
+  routerLinkActive="active"
+  class="list-group-item clearfix">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
+    <p class="list-group-item-text">{{ recipe.description }}</p>
+  </div>
+  <span class="pull-right">
+        <img
+          [src]="recipe.imagePath"
+          alt="{{ recipe.name }}"
+          class="img-responsive"
+          style="max-height: 50px;">
+      </span>
+</a> -->
