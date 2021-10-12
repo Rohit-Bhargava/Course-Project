@@ -2,15 +2,12 @@ import { Recipe } from "./recipe.model";
 import { Ingradient } from "../shared/ingradient.model";
 import { EventEmitter, Injectable } from "@angular/core";
 import { ShoppingListService } from "../Shopping/shopping-list/shopping-list.service";
+import { Subject } from "rxjs";
 
 @Injectable()
 export class RecipeService{
-  updateRecipe(id: number, value: any) {
-    throw new Error('Method not implemented.');
-  }
-  addRecipe(id: number, value: any) {
-    throw new Error('Method not implemented.');
-  }
+  recipesChanged = new Subject<Recipe[]>();
+  
   recipeSelected = new EventEmitter<Recipe>();
   private recipes: Recipe[] =[
     new Recipe( "panipuri is a Indian recipe",
@@ -29,6 +26,7 @@ export class RecipeService{
       new Ingradient('banana', 5)
     ])
   ];
+  
   // recipeSelected: { subscribe: (arg0: (recipe: Recipe) => void) => void; emit: (arg0: Recipe) => void; }
 
   constructor(private slService: ShoppingListService){}
@@ -44,6 +42,21 @@ export class RecipeService{
 
   addIngradientsToShoppingList(ingradiants: Ingradient[]){
     this.slService.addIngradients(ingradiants);
+  }
+
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(index: number, newRecipe: Recipe) {
+    this.recipes[index] = newRecipe;
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  deleteRecipe(index: number) {
+    this.recipes.splice(index, 1);
+    this.recipesChanged.next(this.recipes.slice());
   }
 
 }
